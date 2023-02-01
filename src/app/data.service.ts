@@ -102,33 +102,58 @@ export class DataService {
         },
       ],
     },
-    { puesto: 'Diseñador', menu: [{
-      sopa: [
-        'Crema de Calabazas con Elote',
-        'Crema de Frutos Rojos',
-        'Crema Especial de la Casa',
+    {
+      puesto: 'Diseñador',
+      menu: [
+        {
+          sopa: [
+            'Crema de Calabazas con Elote',
+            'Crema de Frutos Rojos',
+            'Crema Especial de la Casa',
+          ],
+          platillo: [
+            'Pierna de Brontosaurio en Salsa de Amaranto',
+            'Carne Resorteronte en Salsa de Betabel',
+            'Lomo de Gorilla en Salsa Coco con Arandanos',
+          ],
+          postre: [
+            'Crepa Nueces con Nutella',
+            'Moose de Aguacata con Chispas de Elote',
+            'Batido de Frutos Rojos con Hielo y Nueces',
+          ],
+        },
       ],
-      platillo: [
-        'Pierna de Brontosaurio en Salsa de Amaranto',
-        'Carne Resorteronte en Salsa de Betabel',
-        'Lomo de Gorilla en Salsa Coco con Arandanos',
-      ],
-      postre: [
-        'Crepa Nueces con Nutella',
-        'Moose de Aguacata con Chispas de Elote',
-        'Batido de Frutos Rojos con Hielo y Nueces',
-      ],
-    },] },
+    },
   ];
 
   pedidos = [
     {
-      id: '12344',
       empleado: 'clave00',
       sopa: 'ewrew',
       platillo: 'ererew',
       postre: 'edsfdsfs',
     },
   ];
-  constructor() {}
+
+  getUsuarioByClave = (clave: string) => {
+    let empleado = this.usuarios.find((us) => us.clave == clave);
+    if (!empleado) return { error: true, msg: 'Clave de Empleado NO Existe' };
+    let menu = this.getMenuByPuesto(empleado.puesto);
+    return { error: false, empleado, menu };
+  };
+
+  getMenuByPuesto = (puesto: string) => {
+    let men = this.menus.filter((m) => m.puesto == puesto);
+    return men[0].menu;
+  };
+
+  saveOrder = (
+    clave: string,
+    sopa: string,
+    platillo: string,
+    postre: string
+  ) => {
+    this.pedidos.push({ empleado: clave, sopa, platillo, postre });
+    return { ok: true, msg: 'Orden Recibida' };
+  };
 }
