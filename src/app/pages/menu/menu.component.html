@@ -1,49 +1,32 @@
 <div class="row">
-  <div class="col-md-6 offset-md-3 p-5">
+  <div class="col-md-8 offset-md-2 p-5">
     <div class="card">
       <div class="card-header text-center">
-        <h5>Menu Del Dia</h5>
+        <h5>Menu Del Dia para {{puesto}}</h5>
       </div>
       <div class="card-body">
         <div class="card">
           <div class="card-header">Sopa</div>
           <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf="errorSopa">
+              Elija una opcion
+            </div>
+            
             <ul class="list-group">
-              <li class="list-group-item">
+              <li
+                class="list-group-item"
+                *ngFor="let sop of sopas; let i = index"
+              >
                 <input
+                  required
                   class="form-check-input me-1"
                   type="radio"
                   name="sopa"
-                  value="1"
-                  id="sopa1"
+                  [(ngModel)]="sopa"
+                  value="{{ sop }}"
+                  id="sopa{{ i }}"
                 />
-                <label class="form-check-label" for="sopa1">
-                  🎃 Crema de Flor de Calabaza</label
-                >
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="sopa"
-                  value="2"
-                  id="sopa2"
-                />
-                <label class="form-check-label" for="sopa2">
-                  🍄 Crema de Champiñones</label
-                >
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="sopa"
-                  value="3"
-                  id="sopa3"
-                />
-                <label class="form-check-label" for="sopa3">
-                  🌽 Crema de Elote</label
-                >
+                <label class="form-check-label" for="sopa1">{{ sop }}</label>
               </li>
             </ul>
           </div>
@@ -51,42 +34,24 @@
         <div class="card mt-2">
           <div class="card-header">Plato Fuerte</div>
           <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf="errorComida">
+              Elija una opcion
+            </div>
             <ul class="list-group">
-              <li class="list-group-item">
+              <li
+                class="list-group-item"
+                *ngFor="let plat of platillos; let i = index"
+              >
                 <input
+                  required
                   class="form-check-input me-1"
                   type="radio"
                   name="comida"
-                  value=""
-                  id="comida1"
+                  [(ngModel)]="comida"
+                  value="{{ plat }}"
+                  id="comida{{ i }}"
                 />
-                <label class="form-check-label" for="comida1"
-                  >Pechuga rellena de queso en Salsa de Huitlacoche</label
-                >
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="comida"
-                  value=""
-                  id="comida2"
-                />
-                <label class="form-check-label" for="comida2"
-                  >Filete de Res en Salsa de Champiñones</label
-                >
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="comida"
-                  value=""
-                  id="comida3"
-                />
-                <label class="form-check-label" for="comida3"
-                  >Filete de Pescado en Salsa de Almendras</label
-                >
+                <label class="form-check-label" for="comida2">{{ plat }}</label>
               </li>
             </ul>
           </div>
@@ -94,49 +59,31 @@
         <div class="card mt-2">
           <div class="card-header">Postre</div>
           <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf="errorPostre">
+              Elija una opcion
+            </div>
             <ul class="list-group">
-              <li class="list-group-item">
+              <li
+                class="list-group-item"
+                *ngFor="let pos of postres; let i = index"
+              >
                 <input
+                  required
                   class="form-check-input me-1"
                   type="radio"
                   name="postre"
-                  value=""
-                  id="postre1"
+                  [(ngModel)]="postre"
+                  value="{{ pos }}"
+                  id="postre{{ i }}"
                 />
-                <label class="form-check-label" for="postre1">
-                  Crepa de Queso y Zarzamora
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="postre"
-                  value=""
-                  id="postre2"
-                />
-                <label class="form-check-label" for="postre2">
-                  Mil hojas de Fresa y Crema Batida
-                </label>
-              </li>
-              <li class="list-group-item">
-                <input
-                  class="form-check-input me-1"
-                  type="radio"
-                  name="postre"
-                  value=""
-                  id="postre3"
-                />
-                <label class="form-check-label" for="postre3">
-                  Manzana al Horno con Buñuelos
-                </label>
+                <label class="form-check-label" for="postre1">{{ pos }}</label>
               </li>
             </ul>
           </div>
         </div>
       </div>
       <div class="card-footer text-center">
-        <div class="btn btn-primary" routerLink="/confirmado">Enviar</div>
+        <div class="btn btn-primary" (click)="revisaDatos()">Enviar</div>
       </div>
     </div>
   </div>

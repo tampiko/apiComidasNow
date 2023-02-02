@@ -8,6 +8,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { ConfirmadoComponent } from './pages/confirmado/confirmado.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,14 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     ConfirmadoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    FormsModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

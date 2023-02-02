@@ -1,15 +1,30 @@
 <div class="row">
-  <div class="col-md-6 offset-md-3 p-5">
+  <div class="col-md-8 offset-md-1 p-5">
     <div class="card">
       <div class="card-header text-center">
-        <h5>Gracias! Tu pedido ha sido recibido</h5>
+        <h5>Gracias {{ nombre }}! Tu pedido ha sido recibido</h5>
       </div>
       <div class="card-body">
         El menu que elegiste estara disponible en el comedor a la hora de la
         comida, esperamos la disfrutes.
-        <hr>
+        <hr />
+        <p>
+          <strong>Sopa:</strong>
+          {{ sopa }}
+        </p>
+        <p>
+          <strong>Comida:</strong>
+          {{ comida }}
+        </p>
+        <p>
+          <strong>Postre:</strong>
+          {{ postre }}
+        </p>
+
         <div class="text-center">
-          <div class="btn btn-outline-primary" routerLink="/login">Enterado.</div>
+          <div class="btn btn-outline-primary" routerLink="/login">
+            Enterado.
+          </div>
         </div>
       </div>
     </div>

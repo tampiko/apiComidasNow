@@ -138,11 +138,13 @@ export class DataService {
   getUsuarioByClave = (clave: string) => {
     let empleado = this.usuarios.find((us) => us.clave == clave);
     if (!empleado) return { error: true, msg: 'Clave de Empleado NO Existe' };
-    let menu = this.getMenuByPuesto(empleado.puesto);
-    return { error: false, empleado, menu };
+    // let menu = this.getMenuByPuesto(empleado.puesto);
+    return { error: false, empleado };
   };
 
-  getMenuByPuesto = (puesto: string) => {
+  getMenuByPuesto = async (puesto: string) => {
+    console.log('Recibio ',puesto);
+    
     let men = this.menus.filter((m) => m.puesto == puesto);
     return men[0].menu;
   };
