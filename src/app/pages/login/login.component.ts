@@ -6,8 +6,13 @@ import { Component } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
+  let cveEmp: string;
+
 export class LoginComponent {
-  constructor(private dataService: DataService) {}
+
+
+  constructor(private dataService: DataService) { }
 
   login = (clave: string) => {
     let data = this.dataService.getUsuarioByClave('Florencia47');
